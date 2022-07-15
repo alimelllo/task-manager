@@ -1,0 +1,29 @@
+
+.navigation a {
+    text-decoration: none;
+    color: whitesmoke;
+    opacity: 0.6;
+    cursor: pointer;
+    margin: auto;
+    letter-spacing: 1px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgb(92, 92, 92);
+    transition: all 0.3s ease-out;
+}
+.navigation a:nth-child(1){
+    border-left: none;
+}
+.navigation a:hover{ 
+    opacity: 1;
+}
+
+.active {
+    opacity: 1 !important ;
+    border-bottom: 2px solid rgb(32, 255, 117);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    letter-spacing: 2px !important;
+    font-weight: 600;
+}
+
