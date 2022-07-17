@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Intro from "./components/authentication/Intro";
 import DashboardMenu from "./components/dashboard/DashboardMenu";
-import Timer from "./components/dashboard/timer/Timer";
 
 
 function App() {
@@ -20,8 +19,8 @@ const userIsLogged = (boolean) => {
   return (
     <div className="flex">
     { !isUserLoggedIn && <Intro userIsLogged={userIsLogged}/> }
-    { isUserLoggedIn && <DashboardMenu />}
-    {/* <Timer/> */}
+    { isUserLoggedIn  && <DashboardMenu />}
+
     </div>
   );
 }

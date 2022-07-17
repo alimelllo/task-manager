@@ -2,7 +2,6 @@ import React from 'react';
 import classes from  './Intro.module.css';
 import lock from '../../icons/lock.png';
 import done from '../../icons/done.svg';
-
 import { useState } from 'react';
 
 const Intro = (props) => {
@@ -10,6 +9,7 @@ const Intro = (props) => {
 // check if user is authenticated or not
 const [userName , setUserName] = useState('');
 const [password , setPassword] = useState('');
+const [wrongPass , setWrongPass ] = useState(false);
 const [userIsAuthenticated , setuserIsAuthenticated] = useState(false);
 
 const info = {
@@ -28,7 +28,8 @@ const submitHandler = () => {
     }
    
     if(password !== info.passWord){
-        return alert('wrong password')
+        setWrongPass(true);
+        return
     }
     setuserIsAuthenticated(true);
     setTimeout(() => {
@@ -50,7 +51,7 @@ const submitHandler = () => {
 {!userIsAuthenticated && <div className={classes.form}>
     <img className={classes.logo} src={lock}></img>
      <input placeholder='User Name...'  onChange={(e) => setUserName(e.target.value)} value={userName}></input>
-     <input placeholder='Password ...'  onChange={(e) => setPassword(e.target.value)} value={password}></input>
+     <input placeholder={`${wrongPass ? 'Wrong Passwrod ...' : 'Password...'}`}  onChange={(e) => setPassword(e.target.value)} value={password} type='password'  className={`${wrongPass ? classes.wrongpass : ''}`}></input>
      <button onClick={submitHandler}>Enter</button>
 
 </div>}
