@@ -1,26 +1,23 @@
-import { useState } from "react";
-import Intro from "./components/authentication/Intro";
+
+import { useEffect } from "react";
 import DashboardMenu from "./components/dashboard/DashboardMenu";
+import { Router, useNavigate } from "react-router-dom";
 
 
 function App() {
 
-//check if user is logged in
-const [isUserLoggedIn , setIsUserLoggedIn] = useState(false);
-const userIsLogged = (boolean) => {
-  setIsUserLoggedIn(boolean);
- 
-}
+  let navigate = useNavigate();
 
 
-
-
+  useEffect(() => {
+    if(!localStorage.getItem("userName") || !localStorage.getItem("password")){
+      navigate('/Login')
+    }
+})
 
   return (
     <div className="flex">
-    { !isUserLoggedIn && <Intro userIsLogged={userIsLogged}/> }
-    { isUserLoggedIn  && <DashboardMenu />}
-
+    { <DashboardMenu />}
     </div>
   );
 }
